@@ -14,3 +14,11 @@ oe_authentication_eulogin_mock.register:
   requirements:
     _access: 'TRUE'
 
+oe_authentication_eulogin_mock.validate:
+  path: '/cas-mock-server/p3/serviceValidate'
+  defaults:
+    _controller: '\Drupal\oe_authentication_eulogin_mock\Controller\EuLoginMockServerController::validateTicket'
+  requirements:
+    _access: 'TRUE'
+  options:
+    no_cache: 'TRUE'

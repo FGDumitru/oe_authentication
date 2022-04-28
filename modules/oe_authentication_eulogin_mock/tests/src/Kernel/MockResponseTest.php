@@ -56,13 +56,13 @@ class MockResponseTest extends KernelTestBase {
     $userManager->assignServiceTicket('sharon', $ticket);
 
     // Request to validate the ticket.
-    $request = Request::create(Url::fromRoute('cas_mock_server.validate', [], [
+    $request = Request::create(Url::fromRoute('oe_authentication_eulogin_mock.validate', [], [
       'query' => [
         'ticket' => $ticket,
       ],
     ])->toString(TRUE)->getGeneratedUrl());
 
-    $response = \Drupal::service('http_kernel')->handle($request);
+    $response = $this->container->get('http_kernel')->handle($request);
 
     $crawler = new Crawler($response->getContent());
     // The cas:attributes element has been removed.
